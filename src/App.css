@@ -1,11 +1,44 @@
-/* src/App.css */
+/* src/App.css - Enhanced for Modern UI & Efficiency */
 
+/* --- 1. CSS Variables for Easy Theming --- */
+:root {
+    --primary-color: #007bff;          /* Bright Blue for main actions/branding */
+    --secondary-color: #6c757d;        /* Muted Gray for secondary actions/text */
+    --success-color: #28a745;          /* Green for success/confirmation */
+    --info-color: #17a2b8;             /* Cyan for informational messages */
+    --warning-color: #ffc107;          /* Yellow for warnings */
+    --danger-color: #dc3545;           /* Red for errors/destructive actions */
+
+    --bg-light: #f8f9fa;               /* Very light background */
+    --bg-medium: #e9ecef;              /* Slightly darker background for sections/nav */
+    --bg-dark: #343a40;                /* Dark background for header/footer */
+    --text-color-dark: #343a40;        /* Main dark text */
+    --text-color-medium: #5a6268;      /* Secondary text/labels */
+    --text-color-light: #ffffff;       /* Light text on dark backgrounds */
+
+    --border-color-light: #dee2e6;     /* Light border for inputs/dividers */
+    --border-color-medium: #adb5bd;    /* Medium border for cards/tables */
+
+    --card-bg: #ffffff;                /* Card background */
+    --card-hover-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+    --card-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Light shadow for cards */
+
+    --input-focus-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25); /* Focus ring */
+
+    --font-family: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Modern font stack */
+    --border-radius-base: 8px;         /* Standard border radius */
+    --border-radius-lg: 12px;          /* Larger border radius for main containers */
+}
+
+/* --- 2. Base Styles --- */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-family);
     margin: 0;
     padding: 0;
-    background-color: #f0f2f5;
-    color: #333;
+    background-color: var(--bg-light);
+    color: var(--text-color-dark);
+    line-height: 1.6;
+    font-size: 16px; /* Base font size */
 }
 
 #root {
@@ -15,99 +48,131 @@ body {
 }
 
 .App {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 1300px; /* Slightly wider max-width for content */
+    margin: 25px auto;
+    padding: 30px; /* More padding */
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.3s ease; /* Smooth shadow transition */
 }
 
+/* --- 3. Header & Navigation --- */
 header {
-    background-color: #2c3e50;
-    color: white;
-    padding: 20px 0;
+    background: linear-gradient(135deg, #1a2a40, #2c3e50); /* Dark blue gradient */
+    color: var(--text-color-light);
+    padding: 25px 0;
     text-align: center;
-    border-radius: 8px 8px 0 0;
-    margin-bottom: 25px;
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+    margin-bottom: 30px;
+    box-shadow: var(--card-shadow); /* Consistent shadow */
 }
 
 header h1 {
     margin: 0;
-    font-size: 2.5em;
-    letter-spacing: 1px;
+    font-size: 3em; /* Larger, more impactful heading */
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2); /* Subtle text shadow */
 }
 
 nav {
-    background-color: #ecf0f1;
+    background-color: var(--bg-medium);
     padding: 15px 0;
-    border-radius: 0 0 8px 8px;
-    margin-bottom: 30px;
-    text-align: center;
+    border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+    margin-top: 20px; /* Space from header */
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* More space between buttons */
+    flex-wrap: wrap;
+    box-shadow: var(--card-shadow);
 }
 
 nav button {
-    background-color: #3498db;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
     border: none;
-    padding: 12px 25px;
-    margin: 0 10px;
-    border-radius: 6px;
+    padding: 14px 30px; /* Larger buttons */
+    border-radius: var(--border-radius-base);
     cursor: pointer;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1.15em;
+    font-weight: 600;
+    transition: all 0.3s ease; /* Smooth transitions for all properties */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    min-width: 150px; /* Ensure buttons don't get too small */
 }
 
 nav button:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px);
+    background-color: #0056b3; /* Darker primary on hover */
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 nav button.active {
-    background-color: #27ae60;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--success-color); /* Active button is success green */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+    transform: translateY(-1px);
+    border: 2px solid var(--primary-color); /* Add a subtle border for active */
 }
 
+/* --- 4. Section & Headings --- */
 section {
     padding: 30px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    margin-bottom: 20px;
-}
-
-h2 {
-    color: #34495e;
-    margin-top: 0;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #ecf0f1;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--card-shadow);
     margin-bottom: 25px;
 }
 
-h3 {
-    color: #555;
-    margin-top: 25px;
-    margin-bottom: 15px;
-    font-size: 1.4em;
+h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+    padding-bottom: 18px;
+    border-bottom: 2px solid var(--border-color-light);
+    margin-bottom: 30px;
+    font-size: 2.5em; /* Larger section titles */
+    font-weight: 700;
+    text-align: center; /* Center section titles */
 }
 
+h3 {
+    color: var(--text-color-dark);
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 1.8em; /* Sub-headings */
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--border-color-light);
+}
+
+h4 {
+    color: var(--primary-color); /* Use primary color for card titles */
+    font-size: 1.4em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* --- 5. Forms --- */
 form {
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    padding: 20px;
-    border: 1px solid #e0e6ed;
-    border-radius: 8px;
-    background-color: #fdfdfd;
-    margin-bottom: 20px;
+    gap: 22px; /* Increased gap for better spacing */
+    padding: 30px; /* More padding */
+    border: 1px solid var(--border-color-medium);
+    border-radius: var(--border-radius-base);
+    background-color: var(--bg-light);
+    margin-bottom: 30px;
+    box-shadow: var(--card-shadow);
 }
 
 label {
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-weight: 600;
+    margin-bottom: 8px;
     display: block;
-    color: #444;
+    color: var(--text-color-medium);
+    font-size: 0.95em;
 }
 
 input[type="text"],
@@ -118,13 +183,15 @@ input[type="date"],
 input[type="time"],
 select,
 textarea {
-    width: calc(100% - 22px);
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+    width: calc(100% - 24px); /* Account for padding */
+    padding: 14px; /* Larger padding for inputs */
+    border: 1px solid var(--border-color-light);
+    border-radius: var(--border-radius-base);
     font-size: 1em;
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    box-sizing: border-box;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: var(--card-bg); /* White background for inputs */
+    color: var(--text-color-dark);
 }
 
 input[type="text"]:focus,
@@ -135,94 +202,117 @@ input[type="date"]:focus,
 input[type="time"]:focus,
 select:focus,
 textarea:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    border-color: var(--primary-color);
+    box-shadow: var(--input-focus-shadow);
     outline: none;
 }
 
+/* --- 6. Buttons (General) --- */
 button[type="submit"],
 button.primary-btn {
-    background-color: #27ae60;
-    color: white;
+    background-color: var(--success-color);
+    color: var(--text-color-light);
     border: none;
-    padding: 14px 28px;
-    border-radius: 6px;
+    padding: 16px 32px; /* Even larger for primary actions */
+    border-radius: var(--border-radius-base);
     cursor: pointer;
-    font-size: 1.15em;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    align-self: flex-start; /* Align button to start of form for better layout */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1.2em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    align-self: flex-start;
+    box-shadow: var(--card-shadow);
 }
 
 button[type="submit"]:hover,
 button.primary-btn:hover {
-    background-color: #229a56;
-    transform: translateY(-1px);
+    background-color: #218838; /* Darker green on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
 }
 
 button[type="button"],
 .secondary-btn {
-    background-color: #6c7a89;
-    color: white;
+    background-color: var(--secondary-color);
+    color: var(--text-color-light);
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px 25px;
+    border-radius: var(--border-radius-base);
     cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
-    margin-top: 10px; /* For buttons not part of main form submission */
+    font-size: 1.05em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 button[type="button"]:hover,
 .secondary-btn:hover {
-    background-color: #596571;
+    background-color: #5a6268; /* Darker gray on hover */
+    transform: translateY(-1px);
 }
 
+/* --- 7. Tables --- */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 25px;
-    background-color: #fdfdfd;
-    border-radius: 8px;
-    overflow: hidden; /* For rounded corners on table */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-base);
+    overflow: hidden; /* Ensures rounded corners on content inside */
+    box-shadow: var(--card-shadow);
 }
 
 th, td {
-    border: 1px solid #e0e6ed;
-    padding: 12px 15px;
+    border: 1px solid var(--border-color-light);
+    padding: 14px 18px; /* More padding in cells */
     text-align: left;
 }
 
 th {
-    background-color: #f8f9fa;
-    font-weight: bold;
-    color: #555;
+    background-color: var(--bg-medium);
+    font-weight: 700;
+    color: var(--text-color-dark);
     text-transform: uppercase;
     font-size: 0.9em;
+    letter-spacing: 0.5px;
 }
 
 td {
     font-size: 0.95em;
+    color: var(--text-color-dark);
 }
 
+tbody tr:nth-child(even) {
+    background-color: #f6f6f6; /* Subtle stripe for readability */
+}
+
+tbody tr:hover {
+    background-color: #eef; /* Light blue hover for rows */
+    cursor: pointer; /* Indicate rows are clickable if they are */
+}
+
+
+/* --- 8. Messages --- */
 .message {
-    margin: 15px 0;
-    padding: 12px;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: opacity 0.3s ease;
+    margin: 20px auto; /* Center message horizontally */
+    padding: 18px; /* More padding */
+    border-radius: var(--border-radius-base);
+    font-weight: 600;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+    max-width: 800px; /* Constrain message width */
+    text-align: center; /* Center message text */
+    box-shadow: var(--card-shadow);
 }
 
 .message.success {
-    background-color: #d4edda;
-    color: #155724;
+    background-color: #d4edda; /* Light green */
+    color: #155724; /* Dark green */
     border: 1px solid #c3e6cb;
 }
 
 .message.error {
-    background-color: #f8d7da;
-    color: #721c24;
+    background-color: #f8d7da; /* Light red */
+    color: #721c24; /* Dark red */
     border: 1px solid #f5c6cb;
 }
 
@@ -230,126 +320,808 @@ td {
     display: none !important;
 }
 
-/* Specific styles for availability slots */
+/* --- 9. Availability Slots --- */
 .availability-slot {
-    display: inline-block;
-    background-color: #e0f2f7;
-    border: 1px solid #b3e0ed;
-    padding: 8px 12px;
-    margin: 5px;
-    border-radius: 5px;
+    display: inline-flex; /* Use flex for alignment of text and close button */
+    align-items: center;
+    background-color: #e0f7fa; /* Very light cyan */
+    border: 1px solid #b2ebf2;
+    padding: 8px 15px; /* More horizontal padding */
+    margin: 6px; /* Slightly more margin */
+    border-radius: 25px; /* Pill shape */
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.2s ease;
     font-size: 0.9em;
     white-space: nowrap;
+    color: #00796b; /* Teal color for text */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Subtle shadow */
 }
 
 .availability-slot.booked {
-    background-color: #fdd;
+    background-color: #ffe0b2; /* Light orange for booked */
+    color: #e65100; /* Darker orange for text */
     text-decoration: line-through;
     cursor: not-allowed;
-    opacity: 0.7;
+    opacity: 0.8;
+    border-color: #ffcc80;
 }
 
 .availability-slot:hover:not(.booked) {
-    background-color: #cceeff;
+    background-color: #b2ebf2; /* Light blue on hover */
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.availability-slot button { /* 'x' button inside slot */
+    background: none;
+    border: none;
+    color: #ef5350; /* Red for close */
+    font-size: 1.3em;
+    margin-left: 10px;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.availability-slot button:hover {
+    color: #c62828;
 }
 
 .availability-slots-container {
-    border: 1px dashed #e0e6ed;
-    padding: 15px;
-    border-radius: 8px;
-    min-height: 50px;
+    border: 1px dashed var(--border-color-light);
+    padding: 20px; /* More padding */
+    border-radius: var(--border-radius-base);
+    min-height: 60px; /* Taller container */
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
+    align-items: flex-start;
+    gap: 12px; /* More gap between pills */
+    background-color: #fafafa;
 }
 
+/* --- 10. Filter Group (General component filter styling) --- */
 .filter-group {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
-    align-items: flex-end; /* Align items to bottom for consistent form layout */
-    padding: 15px;
-    border: 1px solid #e0e6ed;
-    border-radius: 8px;
-    background-color: #fdfdfd;
+    display: grid; /* Using grid for better responsiveness and control */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adaptive columns */
+    gap: 25px; /* More space between filter elements */
+    margin-bottom: 30px;
+    padding: 25px; /* More padding */
+    border: 1px solid var(--border-color-medium);
+    border-radius: var(--border-radius-base);
+    background-color: var(--bg-light);
+    box-shadow: var(--card-shadow);
+    align-items: flex-end; /* Align inputs/buttons to the bottom */
 }
 
-.filter-group div {
-    flex: 1;
-    min-width: 200px; /* Ensure inputs don't get too small */
+.filter-group > div { /* Direct children of filter-group (e.g., div containing label/input) */
+    display: flex;
+    flex-direction: column;
 }
 
 .filter-group button {
-    margin-top: 0; /* Override general button margin */
+    margin-top: auto; /* Push button to bottom if row heights vary */
+    align-self: flex-start; /* Align button at start of its grid cell */
+    min-width: 140px; /* Ensure filter buttons are readable */
 }
 
-.doctor-card {
-    border: 1px solid #e0e6ed;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+/* --- 11. Cards (General) --- */
+.card {
+    border: 1px solid var(--border-color-medium);
+    border-radius: var(--border-radius-base);
+    padding: 25px; /* More padding */
+    margin-bottom: 25px; /* More margin between cards */
+    background-color: var(--card-bg);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.doctor-card h4 {
-    color: #34495e;
+.card:hover {
+    transform: translateY(-5px); /* Stronger lift effect */
+    box-shadow: var(--card-hover-shadow); /* More pronounced shadow */
+}
+
+.card h4 {
+    color: var(--primary-color);
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-size: 1.6em; /* Larger card titles */
+    font-weight: 700;
+    border-bottom: 1px dashed var(--border-color-light); /* Subtle separator */
+    padding-bottom: 10px;
 }
 
-.doctor-card p {
-    margin: 5px 0;
+.card p {
+    margin: 8px 0; /* More spacing for paragraphs */
+    color: var(--text-color-dark);
 }
 
+.card ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 15px 0 0;
+}
+
+.card ul li {
+    background-color: #f0f8ff; /* Lightest blue for list items */
+    border: 1px solid #e0efff;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    font-size: 0.95em;
+    color: var(--text-color-medium);
+}
+
+/* Specific Card: Hospital with multiple departments */
+.hospital-card.multi-specialty {
+    border-left: 10px solid var(--success-color); /* Thicker, green accent */
+    background-color: #e6ffed; /* Very light green background */
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.18); /* Green tinted shadow */
+}
+
+.hospital-card.multi-specialty h4 {
+    color: var(--success-color); /* Matching green for title */
+}
+
+.hospital-card.multi-specialty p.multi-specialty-tag { /* New class for the tag within the component */
+    font-weight: bold;
+    color: var(--success-color);
+    margin-top: -5px; /* Pull it closer to the title */
+    margin-bottom: 15px;
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: rgba(40, 167, 69, 0.15); /* Slightly more opaque background */
+    border-radius: 6px;
+    font-size: 0.9em;
+}
+
+
+/* --- 12. Modals --- */
 .modal-backdrop {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    backdrop-filter: blur(5px); /* Stronger blur effect */
 }
 
 .modal-content {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    width: 90%;
-    max-width: 500px;
+    background-color: var(--card-bg);
+    padding: 40px; /* More generous padding */
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Much stronger shadow */
+    width: 95%; /* Wider on small screens */
+    max-width: 600px; /* Max width */
     position: relative;
+    animation: fadeInScale 0.3s ease-out forwards; /* Simple animation */
+    border: 1px solid var(--border-color-medium);
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 .modal-close-btn {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 20px;
+    right: 20px;
     background: none;
     border: none;
-    font-size: 1.5em;
+    font-size: 2.5em; /* Larger 'x' */
     cursor: pointer;
-    color: #888;
+    color: #aaa;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .modal-close-btn:hover {
-    color: #333;
+    color: var(--danger-color); /* Red on hover */
+    transform: rotate(90deg) scale(1.1);
 }
 
+/* --- 13. Info Box --- */
 .info-box {
     background-color: #e6f7ff; /* Light blue */
-    border-left: 5px solid #007bff; /* Blue border */
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 4px;
+    border-left: 6px solid var(--info-color); /* Cyan border */
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 6px;
     color: #0056b3;
-} 
+    font-size: 1em;
+    line-height: 1.5;
+    box-shadow: var(--card-shadow);
+}
 
+.info-box strong {
+    color: #004085;
+}
+
+/* --- 14. Report Container --- */
+.report-container {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--card-shadow);
+    margin-top: 25px;
+    border: 1px solid var(--border-color-light);
+}
+
+.report-container p {
+    font-size: 1.05em;
+    margin-bottom: 10px;
+    color: var(--text-color-dark);
+}
+
+.report-container ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+}
+
+.report-container ul li {
+    margin-bottom: 8px;
+    color: var(--text-color-medium);
+}
+
+
+/* --- 15. Landing Page Specific Styles (from previous App.jsx discussion) --- */
+.App-landing-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    text-align: center;
+    padding: 50px 30px; /* More padding */
+    background: linear-gradient(180deg, var(--bg-light) 0%, #e0f7fa 100%); /* Subtle gradient background */
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--card-hover-shadow); /* More prominent shadow for landing */
+    margin-top: 30px;
+}
+
+.landing-content {
+    max-width: 850px; /* Wider content area for landing */
+    margin-bottom: 40px;
+}
+
+.App-landing-section h2 {
+    color: var(--primary-color);
+    font-size: 3.2em; /* Even larger for main welcome */
+    margin-bottom: 15px;
+    font-weight: 800;
+    line-height: 1.2;
+    border-bottom: none;
+    padding-bottom: 0;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1); /* More pronounced text shadow */
+}
+
+.App-landing-section .subtitle {
+    font-size: 1.6em; /* Larger subtitle */
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.feature-highlight {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color-medium);
+    border-radius: var(--border-radius-base);
+    padding: 35px; /* More padding */
+    margin-top: 35px;
+    text-align: left;
+    box-shadow: var(--card-shadow);
+    width: 100%;
+    max-width: 650px; /* Constrain feature list width */
+}
+
+.feature-highlight h3 {
+    color: var(--primary-color);
+    font-size: 2em; /* Larger feature heading */
+    margin-top: 0;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border-color-light);
+    padding-bottom: 12px;
+    text-align: center;
+}
+
+.feature-highlight ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-highlight ul li {
+    padding: 15px 0; /* More padding */
+    border-bottom: 1px dashed #eee;
+    font-size: 1.15em; /* Slightly larger feature text */
+    color: var(--text-color-dark);
+}
+
+.feature-highlight ul li:last-child {
+    border-bottom: none;
+}
+
+.feature-highlight ul li strong {
+    color: var(--bg-dark); /* Darker bold text */
+    font-weight: 700;
+}
+
+
+/* --- 16. Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .App {
+        margin: 20px;
+        padding: 25px;
+    }
+
+    header h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .App-landing-section h2 {
+        font-size: 2.8em;
+    }
+}
+
+@media (max-width: 768px) {
+    .App {
+        margin: 15px;
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    nav button {
+        width: calc(100% - 60px); /* Full width with padding */
+        margin: 0 30px;
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.8em;
+        text-align: left; /* Revert to left align on smaller screens */
+    }
+
+    h3 {
+        font-size: 1.5em;
+    }
+
+    form {
+        padding: 20px;
+        gap: 18px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    input[type="date"],
+    input[type="time"],
+    select,
+    textarea {
+        width: calc(100% - 20px);
+        padding: 12px;
+    }
+
+    button[type="submit"],
+    button.primary-btn {
+        padding: 14px 25px;
+        font-size: 1.05em;
+    }
+
+    .filter-group {
+        grid-template-columns: 1fr; /* Stack filters on small screens */
+        gap: 15px;
+    }
+
+    .message {
+        padding: 15px;
+    }
+
+    .modal-content {
+        padding: 30px;
+    }
+
+    .App-landing-section h2 {
+        font-size: 2.2em;
+    }
+
+    .App-landing-section .subtitle {
+        font-size: 1.3em;
+    }
+
+    .feature-highlight {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .App {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 1.6em;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+
+    h3 {
+        font-size: 1.2em;
+    }
+
+    .App-landing-section h2 {
+        font-size: 1.8em;
+    }
+
+    .App-landing-section .subtitle {
+        font-size: 1.1em;
+    }
+
+    .feature-highlight ul li {
+        font-size: 0.95em;
+    }
+
+    .modal-content {
+        padding: 25px;
+        width: 95%; /* Even narrower on very small screens */
+    }
+}
+/* --- Landing Page Specific Styles --- */
+/* (Add/Replace these rules in your App.css) */
+
+.App-landing-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    text-align: center;
+    padding: 50px 30px; /* More generous padding */
+    background: linear-gradient(180deg, var(--bg-light) 0%, #e0f7fa 100%); /* Subtle gradient background */
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* More prominent shadow for landing */
+    margin-top: 30px;
+    position: relative; /* For potential absolute positioning of elements */
+    overflow: hidden; /* Hide overflowing elements from animations */
+}
+
+/* Hero Section */
+.landing-hero {
+    margin-bottom: 50px;
+    max-width: 900px;
+    animation: fadeInSlideUp 0.8s ease-out forwards;
+    padding: 20px;
+}
+
+.hero-title {
+    color: var(--primary-color);
+    font-size: 3.8em; /* Much larger and impactful */
+    margin-bottom: 15px;
+    font-weight: 800;
+    line-height: 1.1;
+    text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.15); /* Stronger text shadow */
+    position: relative;
+    display: inline-block; /* To allow pseudo-elements to size correctly */
+}
+
+.hero-title::after { /* Underline effect */
+    content: '';
+    display: block;
+    width: 60%;
+    height: 5px;
+    background: var(--success-color);
+    margin: 10px auto 0;
+    border-radius: 5px;
+}
+
+.hero-subtitle {
+    font-size: 1.8em; /* Larger and more inviting */
+    color: var(--secondary-color);
+    margin-bottom: 25px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.hero-description {
+    font-size: 1.15em;
+    color: var(--text-color-medium);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Call to Action Section */
+.call-to-action-section {
+    margin-bottom: 60px;
+    padding: 30px;
+    background-color: var(--bg-medium); /* Light gray background */
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--card-shadow);
+    max-width: 700px;
+    width: 100%;
+    animation: fadeIn 1s ease-out 0.3s forwards; /* Delayed animation */
+    opacity: 0; /* Start invisible */
+    transform: translateY(20px);
+}
+
+.call-to-action-section p {
+    font-size: 1.2em;
+    color: var(--text-color-dark);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.role-selection-hint {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between chips */
+    margin-bottom: 25px;
+}
+
+.role-chip {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    padding: 10px 20px;
+    border-radius: 25px; /* Pill shape */
+    font-size: 1.1em;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.role-chip:nth-child(2) { /* Doctor chip */
+    background-color: var(--success-color);
+}
+.role-chip:nth-child(3) { /* Patient chip */
+    background-color: var(--info-color);
+}
+
+.role-chip:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.instruction-text {
+    font-style: italic;
+    color: var(--text-color-medium);
+    font-size: 0.95em;
+    margin-top: 15px;
+}
+
+/* Feature Highlight Section */
+.feature-highlight-section {
+    margin-bottom: 50px;
+    width: 100%;
+    max-width: 1000px; /* Wider for the grid */
+}
+
+.feature-highlight-section h3 {
+    font-size: 2.5em; /* Larger feature heading */
+    color: var(--bg-dark);
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-align: center;
+    border-bottom: 2px solid var(--border-color-light);
+    padding-bottom: 15px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid columns */
+    gap: 30px; /* Space between cards */
+    animation: fadeIn 1s ease-out 0.5s forwards; /* Delayed animation */
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.feature-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-base);
+    padding: 25px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid var(--border-color-light);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px); /* More pronounced lift */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    font-size: 3.5em; /* Large icons */
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border: 3px solid var(--primary-color);
+    border-radius: 50%; /* Circle background */
+    padding: 15px;
+    background-color: rgba(0, 123, 255, 0.1); /* Light tint */
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    transform: rotateY(360deg); /* Spin effect */
+}
+
+.feature-card h4 {
+    font-size: 1.5em;
+    color: var(--text-color-dark);
+    margin-bottom: 10px;
+    font-weight: 600;
+    border-bottom: none; /* Override general h4 border */
+    padding-bottom: 0;
+}
+
+.feature-card p {
+    font-size: 1em;
+    color: var(--text-color-medium);
+    line-height: 1.5;
+}
+
+/* Landing Page Specific Info Box */
+.info-box-landing {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 800px;
+    font-size: 1.05em;
+    /* Reusing base info-box styles, but can override if needed */
+    background-color: #f0faff; /* Slightly lighter info box */
+    border-left: 6px solid var(--info-color);
+    padding: 20px;
+    border-radius: var(--border-radius-base);
+    color: #004d99;
+    box-shadow: var(--card-shadow);
+    animation: fadeIn 1s ease-out 0.7s forwards; /* Delayed animation */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+
+/* --- Animations --- */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* --- Responsive Adjustments for Landing Page --- */
+@media (max-width: 992px) {
+    .App-landing-section {
+        padding: 40px 20px;
+    }
+    .hero-title {
+        font-size: 3em;
+    }
+    .hero-subtitle {
+        font-size: 1.6em;
+    }
+    .feature-grid {
+        gap: 20px;
+    }
+    .feature-highlight-section h3 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .App-landing-section {
+        padding: 30px 15px;
+    }
+    .landing-hero {
+        margin-bottom: 40px;
+    }
+    .hero-title {
+        font-size: 2.5em;
+    }
+    .hero-subtitle {
+        font-size: 1.4em;
+    }
+    .call-to-action-section {
+        padding: 20px;
+        margin-bottom: 40px;
+    }
+    .call-to-action-section p {
+        font-size: 1.1em;
+    }
+    .role-chip {
+        padding: 8px 15px;
+        font-size: 1em;
+    }
+    .feature-highlight-section h3 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+    .feature-card {
+        padding: 20px;
+    }
+    .feature-icon {
+        font-size: 3em;
+        padding: 12px;
+    }
+    .feature-card h4 {
+        font-size: 1.3em;
+    }
+    .info-box-landing {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 480px) {
+    .App-landing-section {
+        padding: 25px 10px;
+    }
+    .landing-hero {
+        margin-bottom: 30px;
+    }
+    .hero-title {
+        font-size: 2em;
+        line-height: 1.2;
+    }
+    .hero-subtitle {
+        font-size: 1.2em;
+    }
+    .hero-description {
+        font-size: 1em;
+    }
+    .feature-highlight-section h3 {
+        font-size: 1.6em;
+    }
+    .feature-card {
+        padding: 18px;
+    }
+    .feature-icon {
+        font-size: 2.8em;
+        padding: 10px;
+    }
+    .feature-card h4 {
+        font-size: 1.2em;
+    }
+}
