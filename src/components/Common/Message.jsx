@@ -1,4 +1,4 @@
-// src/components/Common/Message.js
+
 import React, { useState, useEffect } from 'react';
 
 const Message = ({ message, type, duration = 5000 }) => {

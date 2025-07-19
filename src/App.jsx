@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { generateUniqueId, loadData, saveData } from './utils/dataService';
 import './App.css'; // Your main CSS file
 import Header from './components/Header';
-import Message from './components/Common/message';
+import Message from './components/Common/Message';
 import HospitalAdminDashboard from './components/Hospitaladmin1/HospitalAdminDashboard';
 import DoctorDashboard from './components/doctors/DoctorDashboard';
 import PatientDashboard from './components/patients/PatientDashboard';
