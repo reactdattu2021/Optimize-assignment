@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import RegisterHospitalForm from './RegisterHospitalForm';
 import ManageDepartments from './ManageDepartments';
 import HospitalReports from './HospitalReports';
-import SelectDropdown from '../Common/SelectDropdown';
+import SelectDropdown from '../Common/selectDropdown';
 
 const HospitalAdminDashboard = ({ hospitals, doctors, departments, appointments, addHospital, addDepartment, showAppMessage }) => {
     const [selectedHospitalForDept, setSelectedHospitalForDept] = useState('');
